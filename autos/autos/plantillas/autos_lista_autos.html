@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block titulo %} Autos registrados {% endblock %}
+
+{% block css %}
+  <style>
+	img { width:100px; }
+  </style>
+{% endblock %}
+
+
+{% block encabezado %}
+  <h1>Nuestros Autos</h1>
+{% endblock %}
+
+{% block contenido %}
+<a href="{% url 'auto_nuevo' %}">Agregar un Auto</a>
+<ul>
+	{% for dato in datos %}
+	<li>
+		<a href='{% url "detalle_auto" dato.id %}'>{{dato.titulo}}</a>
+		
+	</li>
+	{% empty %}
+	<li>Aún no hay autos registrados</li>
+	{% endfor %}
+</ul>
+{% endblock %}

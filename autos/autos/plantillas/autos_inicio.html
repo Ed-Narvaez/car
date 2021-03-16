@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% comment %}Comentarios {% endcomment %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block encabezado %} 
+	<h1>Listado ;) </h1>
+{% endblock %}
+
+{% block contenido %}
+  <p>
+	  Actualmente tenemos registradas: 
+     {% with total=autos.count %} 
+		{{total}} auto{{total|pluralize}}
+	 {% endwith %}
+  </p>
+	<ul>		
+	  {% for dato in autos %}
+	  <li class="{% cycle 'impar' 'par' %}">{{dato.titulo|title}}</li>
+	  {% empty %}
+	  <li>No hay autos registrados aún.</li>
+	  {% endfor %}
+	</ul>
+{% endblock %}

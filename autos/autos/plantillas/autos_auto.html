@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block titulo %} {{auto.titulo}} {% endblock %}
+
+{% block encabezado %}
+  <h1>{{auto.titulo|title}}</h1>
+{% endblock %}
+
+{% block contenido %}
+	<div id='descripcion'>
+		<h2>Descripcion</h2>
+		<p>{{auto.descripcion}}</p>
+	</div>
+	<div id='tipo'>
+		<h2>Tipo de Auto</h2>
+		<p>{{auto.tipo_auto}}</p>
+	</div>
+	<div id='marca'>
+		<h2>Marca de Auto</h2>
+		<p>{{auto.marca_auto}}</p>
+	</div>
+	<div id='comentarios'>
+		<h2>Comentarios</h2>
+			{% for item in comentarios %}
+				<p>{{item.texto}}</p>
+			{% empty %}
+				<p>Sin comentarios registrados</p>
+			{% endfor %}
+	</div>
+	<footer>
+	  <p>Registrado {{ auto.tiempo_registro|date:'SHORT_DATETIME_FORMAT' }} por {{auto.usuario}}</p>
+	</footer>
+{% endblock %}
